@@ -19,7 +19,7 @@
 
 \begin{document}
 
-\title{Machine Learning and Cognitive Agents for Enhanced Sleep Quality Assessment}
+\title{A Comparative Study on Machine Learning Models Performance}
 
 \author{
     \scalebox{0.8}{%
@@ -55,130 +55,127 @@
 \maketitle
 
 \section{Abstract}
-This study investigates the impact of various lifestyle factors on sleep quality using machine learning, aiming to identify actionable insights for improving health through optimized sleep. The "Sleep Health and Lifestyle Dataset" from Kaggle, comprising information on sleep duration, physical activity, stress levels, BMI, and other health indicators, was used to train and evaluate three different models: K-Nearest Neighbors (KNN), Random Forest, and Support Vector Machine (SVM). After data preprocessing—standardizing numerical features and encoding categorical variables—a feature selection based on correlation analysis was performed. Each model's performance was assessed using metrics like accuracy, precision, recall, and F1-score, with Random Forest achieving the highest scores across all performance metrics. Findings from this study underscore the importance of stress management and physical activity in sleep optimization, paving the way for personalized health recommendations and remote monitoring applications in healthcare. On the other hand, this study employs a Belief-Desire-Intention (BDI) framework to develop a prototype simulating the complex interplay between a human individual, their wearable device, a virtual doctor, and a central server. As Adam and Gaudou (2016) \cite{adam2016bdi} highlight, BDI agents are well-suited to capture the social dynamics and decision-making processes inherent in such interactions. In our prototype, each entity is modeled as a BDI agent, with beliefs, desires, and intentions driving their actions. For instance, the virtual doctor agent, informed by its beliefs about sleep disorders and the patient's data received from the server, forms intentions to provide personalized sleep recommendations. The server agent, using the agentspeak library in Python, facilitates communication between the agents and selects the most suitable sleep quality evaluation model based on its beliefs about the available models and its desire to provide the most accurate assessment.  
+
 
 
 \begin{IEEEkeywords}
-Machine Learning, SVM, Random Forest, KNN, BDI agents
+Machine Learning, Linear Regression, Decision Tree, KNN, MLP
 \end{IEEEkeywords}
 
 \section{Introduction}
 
-Sleep quality has a meaningful impact on both physical and mental health. Research over the past decade has documented that sleep disturbance has a powerful influence on the risk of infectious diseases, the occurrence and progression of several major medical illnesses including cardiovascular disease and cancer, and the incidence of depression \cite{Irwin_2015}.
+Artificial intelligence has transformed the world in numerous ways since its emergence over 20 years ago. One of the most prominent branches within this field is Machine Learning, which focuses on developing learning models capable of adapting to and analyzing data at a deeper level than traditional algorithms. Over the years, many significant models have been developed and studied. Among them are Linear Regression (LR) for prediction and its counterpart, Logistic Regression, for classification. Both are among the most basic models, using a linear function that, by adjusting the weights of its variables, enables estimation or classification of data.
 
-Machine learning offers a structured approach to analyzing large-scale health data, enabling researchers to reveal complex relationships between lifestyle factors and health outcomes such as sleep quality. The ability to process large datasets quickly and identify non-linear relationships makes machine learning an ideal tool for this investigation. By leveraging data on physical activity, stress levels, and other lifestyle factors, these models can detect patterns and generate insights that inform personalized recommendations.
+Another notable model is K-Nearest Neighbors (KNN), which, as the name suggests, makes decisions based on the nearest instances to the data being processed. This approach is particularly useful for non-linear data, which can pose challenges for Linear Regression.
 
-One study identified four key factors that influence sleep quality. One of them is lifestyle, which involves the levels of physical activity, caffeine consumption and eating habits of the person. Physical activity can have a mostly positive influence in sleep quality \cite{Wang_Biro_2021}.
+In the realm of low- to moderate-complexity models, the Decision Tree (DT) offers flexibility comparable to or greater than KNN, with a higher number of hyperparameters that allow customization and adaptation to different datasets.
 
-Physical activity not only offers physical benefits but also contributes positively to mental well-being, with studies showing it negatively correlates with mental health problems like anxiety, depression and psychopathological symptoms. all of which negatively impact sleep quality, which in turn can lead to many other health problems \cite{Wu_Tao_Zhang_Zhang_Tao_2015}.
+Finally, at higher levels of complexity, we enter the domain of Neural Networks (NN). These networks employ various methods and strategies to analyze and understand data, with the simplest form being the Multilayer Perceptron (MLP). MLPs are composed of multiple fully connected layers of perceptrons, each of which processes a portion of the information and passes it to the next layer, enabling in-depth data processing.
+    
+To effectively use these models, it is essential to train them with a sufficient amount of data to identify patterns and accurately predict outcomes. Numerous datasets are available for this purpose. One of the most well-known is the red wine quality dataset, which classifies various wines into quality levels based on parameters such as acidity and alcohol content, among others.
 
-Technology may be a part of this problem. A correlation has been found between the amount of screen time and an increase of mental health problems, like anxiety and depression. An increase of screen time also appears to involve a significant decrease in physical activity, which worsens the situation. Not only that, but the study also implies that there is a negative association between screen time and sleep quality \cite{Wu_Tao_Zhang_Zhang_Tao_2015}.
+There are also more specialized datasets, such as those used in disease research, which are typically more complex and domain-specific. This study focuses on analyzing and comparing the performance and behavior of the aforementioned models using two different datasets.
 
-A study on children revealed a relationship between sleep quality and small screens in the bedroom. Notably, researchers found television screens did not have the same negative effects as smaller devices. They hypothesized this difference might be due to TV screens not interfering with sleep when off, unlike portable devices. Additionally, the study corroborates earlier findings of the correlation between increased screen time and decreased sleep quality \cite{Kohyama2021}.
-
-Given the connection between screen time and sleep disturbances, implementing an automatic technological approach to limit screen use is a logical step. For instance, non-invasive monitoring technologies, such as respiratory rate sensors used to diagnose sleep apnea, have already proven effective in continuous, remote monitoring \cite{Cinel2020}. Similarly, recent advancements in sleep monitoring technology, particularly those integrating IoT and machine learning, have shown significant potential in enhancing sleep quality. Systems like SleepSmart utilize non-invasive biosensors to continuously monitor bio-signals, including heart rate, respiration, and body movement, providing tailored recommendations for sleep optimization \cite{Gamel2024}.
-
-These technologies highlight a shift toward preventative healthcare, where sleep monitoring becomes a vital tool in reducing the risk of chronic health issues, such as cardiovascular disease and diabetes, which are often exacerbated by poor sleep quality.
-
-Datasets can be used to train a machine learning model, like KNN or Random Forests, to predict and assess sleep quality for early identification of potential issues, offering early proactive interventions against possible health problems. Advanced models, such as support vector machines or recurrent neural networks, could also be applied in analyzing sequential data in a more accurate manner. PCA might also be used for the purpose of dimensional reduction, enabling the model to focus on the most critical features of interest, thus improving overall classification of sleep quality. 
-
-By carrying out hyper parameter tuning and cross-validation, the model would be trained to be more personalized in recommendations based on the specific sleep-related risk factors of each user. The data-driven approach would, therefore, enable affordable solutions that are also remote and could improve preventive care and overall well-being by prioritizing sleep optimization.
-
-Building upon the established benefits of exercise for sleep, this provides compelling evidence by supporting the importance of both chronic and acute exercise for improving sleep quality in adults\cite{Dolezal_2017}.  Regular exercise was found to have  moderate and strong positive effects on overall sleep. Another study points to  individuals who slept best tended to engage in higher amounts of leisure physical activity while those who performed higher levels of occupational physical activity or no exercise at all tended to sleep worse \cite{wennman2014physical}.  Hence lies the importance of personalized sleep optimization by leveraging machine learning models and incorporating data on individual sleep patterns, exercise habits, and other relevant health factors. AI-driven applications can provide tailored recommendations for improving sleep quality.
-
-Further research comparing sleep quality and quantity as indicators of mental and overall health highlights the importance of sleep quality as a measurement. The researchers found that sleep quality proved to be a more effective metric than sleep quantity for assessing these health aspects. This finding emphasizes the relevance of studying sleep quality in humans for their overall well being \cite{Kohyama2021}.
-
-Additionally, integrating machine learning in health applications raises ethical considerations, particularly in privacy, as users share sensitive health information. Transparent and secure data handling practices are essential to maintain user trust, especially in systems that influence health and lifestyle changes.
-
-The purpose of this investigation is to implement three different machine learning models (KNN, Random Forest, and SVM) to classify sleep quality based on various factors, including sleep duration, physical activity, body mass index, and stress levels. Through analyzing these factors, the study aims to contribute to a data-driven approach for optimizing sleep quality and improving preventive care. However, going beyond simply classifying sleep quality, this study also explores the potential of a Belief-Desire-Intention (BDI) agent framework to simulate the complex interaction between a person, their wearable sleep tracker, a virtual doctor, and a central server. This approach allows us to model not only the prediction of sleep quality but also the dynamic feedback loop and personalized recommendations that can lead to improved sleep outcomes. By simulating human-technology interactions within this healthcare context, we aim to gain insights into how BDI agents can contribute to more effective and personalized interventions for sleep improvement. A detailed description of the BDI agent framework and its implementation, including the simulation flow, server-side code, and agent's communication diagram can be found in Appendices A, B and C.
+The paper structure is the following: First the Methods, where there is an analysis on the data and its processing before implementing the methods. This section also specifies the different hyperparameter values used in each model. Then there are the results of the experiments, where a comparison of performances is made. Following is the discussion, where these results are analysed and finally the conclussion of the study.
 
 \section{Methods}
-This paper employs a machine learning approach to classify sleep quality based on a several individual parameters. The three distinct machine learning methods that are going to be implemented, as mentioned previously: K-Nearest Neighbors (KNN), Random Forest, and Support Vector Machine (SVM).  Additionally, this study utilizes a Belief-Desire-Intention (BDI) agent framework to simulate the interaction between a person, their wearable sleep tracker, a virtual doctor, and a central server, enabling a more comprehensive understanding of personalized sleep improvement strategies.
+This paper employs a machine learning approach for binary classification. The four distinct machine learning methods that are going to be implemented, as mentioned previously: Linear Regression, K-Nearest Neighbors, Decision Tree, and MultiLayer Perceptron model.
 
 \subsection{Data Collection}
 \subsubsection{Dataset} 
-The dataset used in this study consists of 400 records and 13 features, encompassing demographic, physiological, and lifestyle factors related to sleep quality. Preprocessing involved standardizing numerical features, encoding categorical variables, and balancing the classes using the Synthetic Minority Over-sampling Technique (SMOTE) to address class imbalance in the 'Quality of Sleep' variable. This approach ensured fair representation and minimized the risk of model bias.
+This study uses two different datasets. The first dataset is the Red Wine Quality (RWQ) dataset which consists of 1599 records and 11 features, encompassing chemical factors related to red wine quality. Preprocessing involved standardizing and normalizing numerical features, encoding categorical variables, and balancing the classes using the Random Over-sampling Technique (ROS) to address class imbalance in the 'quality' variable. This approach ensured fair representation and minimized the risk of model bias \cite{wine_quality}.
 
-The dataset used in this study is the "Sleep Health and Lifestyle Dataset" sourced from Kaggle (https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset). This dataset provides a comprehensive overview of various factors influencing sleep health.
-
-\subsubsection{\textbf{Parameters}} The following parameters will be extracted from the dataset and used for model training and evaluation:
+\subsubsection{\textbf{Parameters}} The following parameters will be extracted from the RWQ dataset and used for model training and evaluation:
 
     \begin{itemize}
-    \item \textbf{Person ID:} An identifier for each individual.
-    \item \textbf{Gender:} The gender of the person (Male/Female).
-    \item \textbf{Age:} The age of the person in years. 
-    \item \textbf{Occupation:} The occupation or profession of the person.
-    \item \textbf{Sleep Duration (hours):} The number of hours the person sleeps per day. 
-    \item \textbf{Quality of Sleep (scale: 1-10):} A subjective rating of the quality of sleep, ranging from 1 to 10. 
-    \item \textbf{Physical Activity Level (minutes/day):}  The number of minutes the person engages in physical activity daily.
-    \item \textbf{Stress Level (scale: 1-10):} A subjective rating of the stress level experienced by the person, ranging from 1 to 10.
-    \item \textbf{BMI Category:} The BMI category of the person (e.g., Underweight, Normal, Overweight).
-    \item \textbf{Blood Pressure (systolic/diastolic):} The blood pressure measurement of the person, indicated as systolic pressure over diastolic pressure. The values were changed to categorical values like Normal, Elevated, Hypertension Stage 1 and Hypertension Stage 2.
+    \item \textbf{Fixed acidity:} amount of acids that do not evaporate readily.
+    \item \textbf{Volatile acidity:}  the amount of acetic acid in wine, which at too high of levels can lead to an unpleasant, vinegar taste.
+    \item \textbf{Citric acid:} amount of citric acid found in the wine.
+    \item \textbf{Residual sugar:} the amount of sugar remaining after fermentation stops.
+    \item \textbf{Chlorides:} the amount of salt in the wine.
+    \item \textbf{Free sulfur dioxide:} the free form of SO2 exists in equilibrium between molecular SO2 (as a dissolved gas).
+    \item \textbf{Total sulfur dioxide:} amount of free and bound forms of S02.
+    \item \textbf{Density:} wine density depending on the percent alcohol and sugar content.
+    \item \textbf{pH:}  how acidic or basic a wine is on a scale from 0 (very acidic) to 14 (very basic).
+    \item \textbf{Sulphates:} a wine additive which can contribute to sulfur dioxide gas (S02) levels
+    \item \textbf{Alcohol:} the percent alcohol content of the wine
+    \end{itemize}
+    
+The wine quality is categorized in a scale from 0 to 10, athough in order to make a binary classification this feature was modified so that every wine of a quality score of 5 or below will be considered "bad" wine and wine above 5 score will be considered "good" wine.
 
-    \item \textbf{Heart Rate (bpm):} The resting heart rate of the person in beats per minute.
-    \item \textbf{Daily Steps:} The number of steps the person takes per day. 
-    \item \textbf{Sleep Disorder:} The presence or absence of a sleep disorder in the person (None, Insomnia, Sleep Apnea). 
+On the other hand, the second dataset used is the Alzheimer's Disease (AD) Dataset, which is an extensive health information for 2,149 patients. The dataset includes demographic details, lifestyle factors, medical history, clinical measurements, cognitive and functional assessments, symptoms, and a diagnosis of Alzheimer's Disease. This dataset has much more complexity than the first one, since this has 34 features, of which most of them are binary. Each instance contains the followin patient information:
+
+    \begin{itemize}
+    \item \textbf{Patient ID:} Each patient has a unique 4 digit ID.
+    \item \textbf{Demographic Detail:} From each patient the Age, Gender, Ethnicity (Caucasian, African American, Asian or Other) and the Education Level (None, High School, Bachelor or Higher) is registered.
+    \item \textbf{Lifestyle Factors:} Physiological data like BMI or Sleep Quality and habits like Smoking, Alcohol Consumption, Physical Activity and Diet Quality.
+    \item \textbf{Medical History:} Any diagnosis made that could be relevant like Family  History with Alzheimer (a binary variable), Cardiovascular Disease, Diabetes, Depression, Head Injury or Hypertension.
+    \item \textbf{Clinical Measurments:} Like Systolic Blood Pressure, Diastolic Blood Pressure, Total Cholesterol, Low-Density Lipoprotein Cholesterol levels, High-Density Lipoprotein Cholesterol levels and Triglycerides Levels.
+    \item \textbf{Cognitive and Functional Assessments:} Mini-Mental State Examination (MIME) score, Functional Assessments, Memory Complaints, Behavioral Problems, Activities of Daily Living (ADL) score.
+    \item \textbf{Symptoms:} Alzheimer's Disease symptomps like Confusion, Disorientation, Personality Changes, Dificulty Completing Tasks and Forgetfulness.
+    \item \textbf{Diagnosis Information:} Diagnosis over Alzheimer's Disease.
+    \item \textbf{Confidential Information:} Confidential information about the doctor in charge, with "XXXConfid" as the value for all patients.
     \end{itemize}
     
 \subsection{Data Preprocessing}
 
-To prepare the dataset for analysis, each feature underwent specific transformations to optimize model training. Numerical features were standardized to equalize their scale, ensuring that models like KNN, which rely on distance-based calculations, were not skewed by large magnitude differences. Categorical features, such as 'Gender', 'Occupation', and 'BMI Category', were numerically encoded to make these qualitative variables accessible for machine learning algorithms. Handling missing values and addressing outliers, particularly in the 'Heart Rate' feature, maintained data integrity and supported reliable model predictions.
+To prepare the dataset for analysis, each feature underwent specific transformations to optimize model training. Numerical features were standardized or normalized to equalize their scale, ensuring that models like KNN, which rely on distance-based calculations, were not skewed by large magnitude differences. Categorical features, such as 'Ethnicity' or 'Educational Level' although were already numerically encoded were encoded through binary vectors, to make these variables accessible for NN models. Handling missing values and addressing outliers, particularly in the 'Residual Sugar' and 'Chlorides' features, maintained data integrity and supported reliable model predictions.
 
 \begin{itemize}
-\item \textbf{Cleaning:} The dataset will be cleaned by handling missing values and outliers. The 'Sleep Disorder' column has NaN values which actually represent the absence of a sleep disorder. These will be left untouched as they are meaningful to the analysis. Outliers in the 'Heart Rate' column will be addressed by removing values that are beyond three standard deviations from the mean.
+\item \textbf{Cleaning:} The dataset was cleaned by handling missing values and outliers. No column had missing values. Outliers in the columns will be addressed by removing values that are beyond three standard deviations from the mean.
    
-\item \textbf{Transformation:} The dataset will undergo a transformation process to prepare it for machine learning. Numeric features, except for 'Person ID' and 'Quality of Sleep', will be standardized using scikit-learn's StandardScaler. This ensures all features have a mean of 0 and a standard deviation of 1, preventing scale domination issues for distance-based models like KNN and SVM. Categorical features, including 'Gender', 'Occupation', 'BMI Category', 'Blood Pressure', and 'Sleep Disorder', will be encoded into numerical values using scikit-learn's LabelEncoder. 
+\item \textbf{Transformation:} The dataset will undergo a transformation process to prepare it for machine learning. Numeric features, except for 'Patient ID' and both prediction columns, will be standardized using scikit-learn's StandardScaler and normalized with MinMaxScaler. This ensures all features have a mean of 0 and a standard deviation of 1, in the case of standarization and comprising the values in a range between 0 and 1 for normalization, both preventing scale domination issues for distance-based models like KNN and allowing optimal learning for MLP. Categorical features, including 'Ethnicity' or 'Educational Level', will be encoded into binary vectors using scikit-learn's OneHotEncoder. 
 
-\item \textbf{Feature Selection and Correlation Analysis:} Feature selection was guided by correlation analysis to retain variables with meaningful associations to sleep quality, improving model accuracy by focusing on relevant factors while reducing noise in the dataset. Features with weak correlations (below 0.3) were excluded, streamlining the data to optimize training efficiency. A correlation analysis was performed to prioritize features with meaningful associations with sleep quality. Only variables demonstrating at least a moderate correlation (above 0.3) with 'Quality of Sleep' were included in model training. Features exhibiting a 'weak' correlation (less than 0.3) with 'Quality of Sleep' were excluded, while those with 'moderate' (between 0.3 and 0.7) or 'strong' (greater than 0.7) correlations were retained. This step enhanced both predictive accuracy and interpretability by focusing on the most impactful factors, reducing noise in the dataset and allowing models to concentrate on the primary variables influencing sleep quality. 
+\item \textbf{Feature Selection and Correlation Analysis:} In both implementations all features were used in the training and testing of the models. This is due to the lack of correlation with the prediction variable, since every relation in both datasets is weak (below 0.3) and very few to no relations were 'moderate' (between 0.3 and 0.7) or 'strong' (greater than 0.7). 
 
-\item \textbf{Oversampling:} To address class imbalance in the 'Quality of Sleep' target variable, the Synthetic Minority Over-sampling Technique (SMOTE) will be used. This will be applied only to the training set after the data split to avoid data leakage. 
+\item \textbf{Oversampling:} To address class imbalance in the target variables ('quality' for RWQ dataset and 'diagnosis' for AD datset), the ROS technique was used. This will be applied only to the training set after the data split to avoid data leakage. 
 \end{itemize}
 
 \subsection{Model Implementation}
 
-Each model was selected due to its unique strengths in handling the dataset’s specific properties. K-Nearest Neighbors (KNN) is beneficial for identifying clusters based on Euclidean distances, ideal for smaller datasets or rapid assessments. Random Forest, with its ensemble nature, mitigates overfitting and captures complex, non-linear relationships in data. Support Vector Machine (SVM), known for high-dimensional data processing, is valuable for datasets with multiple interrelated features, such as those capturing lifestyle factors and health metrics.
+Each model was implemented using the following specifications:
 
 \begin{itemize}
+% * <AlexBeanie> 16:09:20 21 Nov 2024 UTC-0600:
+% No añade información relevante, decidir si eliminar
+\item \textbf{Logistic Regression (LR):} 
+    \begin{itemize}
+    \item The LR algorithm was implemented using scikit-learn in Python.
+    \item The best implementation was selected using grid search and 5-fold cross-validation.
+    \end{itemize}
+    
 \item \textbf{K-Nearest Neighbors (KNN):} 
     \begin{itemize}
-    \item The KNN algorithm will be implemented using scikit-learn in Python.
+    \item The KNN algorithm was implemented using scikit-learn in Python.
     \item The optimal value for 'k' (number of neighbors) will be determined using grid search and 5-fold cross-validation.
     \item Distance metric used: Euclidean distance (default in scikit-learn).
     \end{itemize}
 
-\item \textbf{Random Forest:}
+\item \textbf{Decision Tree (DT):}
     \begin{itemize}
-    \item The Random Forest algorithm will be implemented using scikit-learn in Python.
+    \item The DT algorithm will be implemented using scikit-learn in Python.
     \item Hyperparameters to be tuned using grid search and 5-fold cross-validation include:
         \begin{itemize}
-        \item  'n\_estimators': [50, 100, 200] 
-        \item 'max\_depth': [None, 10, 20, 30] 
-        \item 'min\_samples\_split': [2, 5, 10] 
-        \item 'min\_samples\_leaf': [1, 2, 4] 
-        \item 'max\_features': ['sqrt', 'log2', None] 
-        \item 'bootstrap': [True, False] 
+        \item 'max\_depth': [10, 20, 30] 
+        \item 'min\_samples\_split': [10, 20, 30] 
+        \item 'min\_samples\_leaf': [8, 16, 32, 64] 
+        \item 'max\_features': [5, 8, 'sqrt', 'log2']
         \end{itemize}
     \end{itemize}
 
-\item \textbf{Support Vector Machine (SVM):}
+\item \textbf{MultiLayer Perceptron (MLP):}
     \begin{itemize}
-    \item The SVM algorithm will be implemented using scikit-learn in Python. 
-    \item Kernel used: The optimal kernel will be selected from ['linear', 'rbf', 'poly'] using grid search and 5-fold cross-validation. 
-    \item Other hyperparameters to be tuned: 
-        \begin{itemize}
-        \item 'C': [0.1, 1, 10, 100] 
-        \item  'gamma': [1, 0.1, 0.01, 0.001] 
-        \end{itemize}
+    \item The MLP algorithm will be implemented using keras and scikit-learn in Python. 
+    \item The best architecture for each dataset was found through fine tunning, grid search and 5-fold cross-validation. 
     \end{itemize}
 \end{itemize}
 
-Hyperparameter tuning was conducted through grid search combined with 5-fold cross-validation, optimizing the performance of each model. Cross-validation helped construct the best model across different data splits, ensuring generalizability. Key parameters, such as the optimal 'k' in KNN, the number of estimators in Random Forest, and kernel type in SVM, were tuned to achieve the best fit for each model. This systematic approach maximized each model’s predictive capabilities while maintaining robustness.
+Hyperparameter tuning was conducted through grid search combined with 5-fold cross-validation, optimizing the performance of each model. Cross-validation helped construct the best model across different data splits, ensuring generalizability. This systematic approach maximized each model’s predictive capabilities while maintaining robustness.
 \subsection{Model Evaluation}
 
 \begin{itemize}
-\item \textbf{Performance Metrics:} Model performance was evaluated using accuracy, precision, recall, and F1-score, each selected for its relevance in health data classification. Accuracy provides an overall measure of correct classifications, while precision and recall focus on the model's effectiveness in identifying positive instances, making them critical for assessing model reliability in health-related data. F1-score balances precision and recall, offering a more nuanced view of the model’s performance.
 
-\item \textbf{Training and Testing:} The dataset will be split into training and testing sets using an 80/20 split with stratified sampling. 
+\item \textbf{Training and Testing:} The dataset will be split into training and testing sets using an 80/20 split with stratified sampling. Also, from the training set, 20\% of the data was selected as a Validation set, in the case of MLP.
 
 \item \textbf{Performance Metrics:} Model performance will be evaluated based on:
 \begin{enumerate}
@@ -205,157 +202,70 @@ It essentially measures the proportion of positive predictions that were truly c
  \[F1 = 2 \cdot \frac{\substack{\text{True} \\ \text{Positives}}}{\substack{\text{True} \\ \text{Positives}} + \substack{\text{False} \\ \text{Positives}} + \substack{\text{False} \\ \text{Negatives}}}\]
 
 \end{enumerate}
-\item \textbf{Comparison:} The performance of the three models (KNN, Random Forest, SVM) will be compared to identify the most effective model for sleep quality classification.
+\item \textbf{Comparison:} The performance of the four models will be compared to identify the most effective model on each dataset.
 \end{itemize}
 
-\subsection{BDI Agent Implementation} 
-
-This study employs a Belief-Desire-Intention (BDI) agent framework to simulate the interaction between a person, their wearable sleep tracker, a virtual doctor, and a central server. Each entity is modeled as an independent BDI agent, implemented using the agentspeak library in Python. This framework allows us to capture the autonomous decision-making processes and communication flow involved in sleep quality assessment and personalized recommendations.
-
-\subsubsection{Agent Architecture and Communication}
-
-The BDI agents interact according to the following architecture:
-
-* \textbf{Person Agent:} Represents the individual being monitored. This agent simulates daily activities and sleep patterns, generating data that reflects various lifestyle factors influencing sleep quality. This data is then communicated to the Wearable agent.
-
-* \textbf{Wearable Agent:} Acts as an intermediary between the Person agent and the Server agent. It receives data from the Person agent and transmits it to the Server agent for analysis.
-
-* \textbf{Server Agent:}  This agent is responsible for analyzing the received data and assessing the individual's sleep quality. It utilizes a Random Forest machine learning model (detailed in the Model Implementation subsection) to predict sleep quality based on the received data.  The Server agent then communicates the assessment to the Virtual Doctor agent.
-
-* \textbf{Virtual Doctor Agent:}  Based on the sleep quality assessment received from the Server agent, the Virtual Doctor agent provides personalized recommendations and advice to the Person agent aimed at improving their sleep quality.
-
-Communication between these agents is facilitated through asynchronous message passing. Each agent possesses plans and actions defined in its respective `.asl` file (e.g., `person.asl`, `wearable.asl`). These plans and actions dictate how an agent responds to incoming messages and performs its designated tasks.
-
-\subsubsection{BDI Reasoning Cycle}
-
-The agents follow a BDI reasoning cycle, which involves:
-
-1. \textbf{Belief Revision:} Agents update their beliefs based on new information received from other agents or from their own sensors.
-
-2. \textbf{Option Generation:} Agents generate options for actions based on their current beliefs and desires.
-
-3. \textbf{Plan Selection:} Agents select the most appropriate plan of action based on their beliefs and the available options.
-
-4. \textbf{Execution:} Agents execute the chosen plan, which may involve sending messages to other agents or performing actions in the environment.
-
-\subsubsection{Implementation Details}
-
-The BDI agents are implemented using the agentspeak library in Python. Each agent's behavior is defined in an `.asl` file, which contains its beliefs, plans, and actions written in the agentspeak language. The `env.py` file provides supporting functions, including data generation (`generate\_data`, `get\_data`), data preprocessing, and the Random Forest model (`make\_prediction`) used by the Server agent to predict sleep quality.
-
 \section{Results}
-The analysis of model errors revealed that misclassifications predominantly occurred in middle-range sleep quality ratings. This is likely due to overlapping characteristics in moderate sleep quality levels, making distinctions more challenging. The Random Forest model demonstrated robustness, with fewer errors in identifying both high and low sleep quality, effectively distinguishing these extreme values. In contrast, KNN and SVM exhibited more challenges in differentiating between moderate and higher sleep quality ratings, indicating that additional data features or parameter tuning might improve their performance.
+In the case of the RWQ dataset, the best performing model was MLP, with an accuracy up to 80\% and a ROC-AUC score over 0.86. KNN was very stable overall, while its accuracy is not as high as MLP its ROC-AUC score was very remarkable. Linear Regression had a surprising behavior, with an unusually high accuracy and ROC-AUC. Another interesting case is decision tree, that had the lowest both accuracy and ROC-AUC score. This may be dut to its overfitting.
 
-Table \ref{tab:model_performance} provides a detailed comparison of accuracy, precision, recall, and F1-score for the three models: KNN, Random Forest, and SVM. Random Forest consistently achieved the highest scores across all metrics, confirming its effectiveness and reliability in predicting sleep quality within this dataset.
+Table \ref{tab:model_perf_RWQ} provides a detailed comparison of accuracy, precision, recall, and F1-score for the four models for this dataset.
 
 \begin{table}[ht]
 \caption{Model Performance Comparison}
 \centering
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-Model & Accuracy & Precision & Recall & F1-Score \\
+Model & Accuracy & Precision & Recall & F1-Score & ROC-AUC\\
 \hline
-KNN & 0.9041 & 0.95 & 0.90 & 0.92 \\
-Random Forest & 0.9863 & 0.99 & 0.99 & 0.99 \\
-SVM & 0.9589 & 0.96 & 0.96 & 0.96 \\
+LR & 0.76 & 0.77 & 0.77 & 0.76 & 0.8368\\
+KNN & 0.75 & 0.75 & 0.75 & 0.75 & 0.8408\\
+DT & 0.72 & 0.73 & 0.73 & 0.72 & 0.7941\\
+MLP & 0.79 & 0.79 & 0.79 & 0.79 & 0.8679\\
 \hline
 \end{tabular}
-\label{tab:model_performance}
+\label{tab:model_perf_RWQ}
 \end{table}
 
-The Random Forest model emerged as the most suitable choice, achieving high performance across all evaluation metrics and particularly excelling in distinguishing between high and low sleep quality. This performance can be attributed to its ensemble nature, which enables it to capture complex, non-linear patterns within the data, providing both high accuracy and generalizability.
+On the other hand, the AD dataset shows different results. In this case, the best performing model is not MLP (which is the second) but Decision Tree. This model obtained an average accuracy and ROC-AUC score of 92\%. All the performance scores for this dataset are included in the Table \ref{tab:model_perf_AD}
 
-Interestingly, our correlations done in the pre-processing phase showed that for our specific dataset, the 'Physical Activity Level' variable wasn't a good predictor variable for our study. Since the literature review suggests that there should be a strong correlation present between our target variable and the physical activity level, more studies on this with more observations can be done in order to conclude something specific about the physical activity's influence on sleep quality.
-
-
-The results demonstrate the effectiveness of BDI's approach, with the server agent successfully leveraging its 'beliefs' about model performance to select and deploy a Random Forest model. This model, known for its ability to handle complex datasets and generalize well to new data, accurately predicted sleep quality in our simulated individuals. The server's 'quality belief,' informed by the BDI framework, played a crucial role in enabling this successful prediction.
+\begin{table}[ht]
+\caption{Model Performance Comparison}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Model & Accuracy & Precision & Recall & F1-Score & ROC-AUC\\
+\hline
+LR & 0.82 & 0.74 & 0.76 & - & 0.8045\\
+KNN & 0.70 & 0.57 & 0.64 & - & 0.6875\\
+DT & 0.92 & 0.88 & 0.89 & - & 0.9150\\
+MLP & 0.80 & 0.72 & 0.75 & - & 0.7958\\
+\hline
+\end{tabular}
+\label{tab:model_perf_AD}
+\end{table}
 
 \section{Discussion}
-While Random Forest provided the highest predictive accuracy, each model demonstrated unique strengths. KNN was computationally efficient and effective on smaller datasets, making it suitable for rapid assessments. SVM, known for its robustness in high-dimensional data, handled complex, multi-variable sleep quality datasets well. However, Random Forest’s ensemble approach effectively reduced overfitting, making it ideal for applications where accuracy is a priorities. This comparison underscores the importance of selecting a model based on specific application needs, balancing computational demands and performance requirements.
 
-In this study, the Random Forest model was selected for integration into the BDI agent framework due to its balance of accuracy and interpretability. Although sleep quality is inherently a multiclass problem, with the Random Forest model potentially returning multiple labels, for simplicity, we designed the server agent to make a binary decision: if the predicted sleep quality score is below 6, it is classified as 'bad,' triggering further actions within the BDI framework. This simplification allows for a clearer demonstration of the BDI agent interaction and decision-making process, while still capturing the essence of personalized sleep improvement. The server agent, acting as a central hub for data processing and decision-making, leverages the Random Forest model to form 'beliefs' about the user's sleep quality, which in turn influence the virtual doctor's 'desires' to improve the user's sleep and its 'intentions' to provide personalized advice. 
+In the first dataset, RWQ, the models generally exhibited similar performance, with accuracy within the 70\% range. The MLP model showed the best performance, likely due to its higher processing and learning capacity.
 
-As these models are integrated into wearable health applications, maintaining strict data privacy and transparency is essential. Explainable AI could further support user trust in sleep optimization recommendations, a key area for future research.
+In contrast, this homogeneity was lost in the second dataset, where model performance varied significantly. This variation is particularly evident in the KNN model’s performance, with accuracy dropping from 75\% to 70\%. Although this figure remains acceptable, it becomes noteworthy considering that most models in this dataset maintained accuracy around 80\%. This result could be attributed to KNN’s difficulty in correctly classifying complex data. Since KNN calculates distances between instances based on data features, an increase in the number of features can lead to higher error rates.
 
-The limited dataset size may affect model robustness. Future studies could address this with larger datasets or explore advanced techniques like deep learning for enhanced predictive accuracy. Additionally, incorporating more diverse health metrics may further refine model applicability.
+On the other hand, the MLP and LR models had similar performance in the second dataset, whereas MLP was clearly superior in the first dataset. This difference is intriguing, as its cause is not immediately evident. It is unlikely that the amount of data is the issue: following the rule of thumb, with around 30 features, at least 300 instances are required, and this dataset has over 2000. Both models exhibit slight overfitting, but not to a degree that significantly impacts performance. A random effect is also unlikely, as the results are averaged across five different runs. Various MLP architectures were tested, all showing similar performance. It seems the MLP model may be struggling to grasp the specific patterns within this dataset, while LR may be better suited due to its simplicity.
 
-These findings have practical applications in wearable devices and mobile health apps for sleep monitoring. Future work could incorporate longitudinal health data and deep learning methods to capture temporal patterns, offering real-time insights and lifestyle adjustments based on individual data.
+Interestingly, the decision tree displayed completely opposite performance across the two datasets. In the first dataset, it was the worst-performing model, with an accuracy of 72\%, while in the second dataset, it achieved scores above 90\%. This outcome could be explained by the second dataset’s greater number of features, enabling each tree node to leverage more data for decision-making at each split.
 
 \section{Conclusion}
-This study underscores the potential of machine learning, particularly Random Forest models, to identify key lifestyle factors like stress and physical activity that influence sleep quality. The Random Forest model achieved the highest accuracy, benefiting from its ensemble nature that captures complex data patterns effectively. Future research could leverage additional biometric data for personalized, real-time healthcare, advancing preventative strategies in sleep optimization.
 
-For situations requiring a quick training with acceptable accuracy, KNN offers a practical solution due to its lower computational demands. However, for applications prioritizing precision, Random Forest remains the optimal choice. SVM, while effective, is less recommended given its longer training time and lower performance compared to Random Forest in this context.
+Throughout this experiment, four different machine learning models were implemented using two distinct datasets. The results of these implementations reveal interesting behaviors for each model. Logistic Regression, the simplest of all models, performs moderately well when the data complexity is low. While limited, it can be useful, especially for data with a linear trend.
 
-By integrating machine learning with wearable technology, this approach provides actionable insights for enhancing sleep hygiene, ultimately promoting better mental and physical well-being.
+In contrast, KNN shows strong performance with smaller datasets and low-complexity features; however, its performance can easily degrade when the number of features increases. The decision tree model has the opposite challenge, as it demonstrated better performance with a large number of features. However, it tends to overfit on low-complexity data, and mitigating this overfitting was not straightforward.
 
-This prototype demonstrates the potential of using a BDI framework to simulate complex interactions between humans and technology in the context of sleep quality assessment. By modeling the server, person, wearable, and virtual doctor as BDI agents, the prototype successfully captures the decision-making processes and communication flows involved in this scenario. The server agent's ability to select and deploy a Random Forest model based on its "beliefs" about model performance highlights the effectiveness of this approach in achieving accurate sleep quality predictions. This prototype lays the groundwork for future research and development in utilizing BDI agents for personalized healthcare applications.
+Lastly, the MLP neural network exhibited variability in performance depending on the dataset, similar to the other models. Overall, it achieved high accuracy across both implementations, though with relatively lower accuracy on the second dataset. Additionally, MLP showed a tendency to overfit when using a minimal number of layers.
 
+In summary, each model’s performance is influenced by the data’s complexity and size. Determining the best fit for a particular dataset may require experimentation to understand which model will perform optimally.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
-\newpage % Salto de página aquí
-\section*{Appendix A: Simulation's flows using DBI's framework}
-% Content of the first appendix
 
-\includegraphics[scale=0.15]{flow.png}
-\newpage % Salto de página aquí
-
-\section*{Appendix B: Server-Side Belief and Plan Implementation}
-
-This appendix details the server-side code responsible for managing beliefs and executing plans related to user sleep quality.
-
-\subsection*{Beliefs :}
-
-The agent maintains a belief about the user's sleep quality, represented by the predicate quality/1. In this example, the initial belief is set to 9, indicating high sleep quality.
-\begin{verbatim}
-quality(9).  
-\end{verbatim}
-\subsection*{Plans or Desires and Intentions:}
-
-The predict\_sleep\_goal plan predicts the user's sleep quality and guides the agent's response. This plan uses a Random Forest model (defined in env.py) to predict sleep quality (X) based on user input (Msg). This prediction updates the agent's beliefs about the user's sleep. Based on these updated beliefs, the agent forms intentions to improve sleep quality. These intentions are represented by the activation of the update\_quality and verify\_quality desires. 
-
-\begin{verbatim}
-+!predict_goal(Msg) : true
-    <-  
-    .make_prediction(Msg, X); 
-    .print("The achieved sleep quality is :", X); 
-    !update_quality(X); 
-    !verify_quality. 
-    
-\end{verbatim}
-
-Following the prediction, the update\_quality plan retracts the current quality belief and asserts a new belief with the updated value (NewQuality).
-
-\begin{verbatim}
-+!update_quality(NewQuality)
-    : quality(CurrentQuality)  
-    <- -quality(CurrentQuality);
-    +quality(NewQuality).
-\end{verbatim}
-
-Finally, the verify\_quality plan assesses the updated sleep quality belief. If the quality belief is less than 6, the agent initiates contact with a virtual doctor to provide support and recommendations.
-
-\begin{verbatim}
-+!verify_quality
-    : quality(T) & T < 6
-    <- .print("I think you need the virtual doctor");
-    .send(virtual_doctor, askHow, "+!contact_doctor(M)");
-    .wait(2000); 
-    !contact_doctor(T)[source(virtual_doctor)]. 
-\end{verbatim}
-
-Conversely, if the quality belief is 6 or greater, the agent provides positive feedback to the user.
-
-\begin{verbatim}
-
-+!verify_quality
-    : quality(T) & T > 5
-    <- .print("You have good sleep habits").
-\end{verbatim}
-
-\newpage % Salto de página aquí
-
-\section*{Appendix C: Agent's Communication Diagram}
-
-\includegraphics[scale=0.7]{comunication_flow.png}
 
 \end{document}
